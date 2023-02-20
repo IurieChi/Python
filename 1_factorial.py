@@ -23,8 +23,9 @@ def factorial(num):
             fact = fact * i
         print("The factorial of",num,"is",fact)
 
-        
+# Aks user to enter number and convert it to int        
 num = int(input("Enter a number: "))
+# call functioon 
 factorial(num)
 
 
