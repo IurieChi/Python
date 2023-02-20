@@ -21,16 +21,15 @@ def factorial(num):
     else:
         for i in range(1, num + 1):
             fact = fact * i
-        print("The factorial of",num,"is",fact)
+        print(f"The factorial of {num} is {fact}")
 
 # Aks user to enter number and convert it to int        
 num = int(input("Enter a number: "))
-# call functioon 
+# call function 
 factorial(num)
 
 
 # Similar function ca be done using recursion 
-
 
 # def factorial(num):
 #     if type(num) is not int:
@@ -39,5 +38,4 @@ factorial(num)
 #         return None
 #     if num == 0:
 #         return 1
-    
 #     return num * factorial(num - 1)
