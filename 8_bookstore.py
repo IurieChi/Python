@@ -1,6 +1,17 @@
-# Using class-level and static methods
 
-class Book:
+
+# Using composition to build complex objects
+class Author():
+    def __init__(self, fname,lname):
+       self.fname = fname
+       self.lname = lname
+
+    # print author name 
+    def __str__(self) -> str:
+       return f'Author {self.fname} {self.lname}'
+
+
+class Book():
     # Properties defined at the class level are shared by all instances
     BOOK_TYPES = ("HARDCOVER", "PAPERBACK", "EBOOK")
     # double-underscore properties are hidden from other classes
@@ -28,7 +39,7 @@ class Book:
 
     # the "init" function is called when the instance is
     # created and ready to be initialized  
-    def __init__(self, title, pages, author, price,booktype):
+    def __init__(self, title, pages,price, booktype, author = None):
         self.title = title
         self.pages = pages
         self.author = author
@@ -50,9 +61,12 @@ class Book:
 #  access the class attribute
 print("Book types: ", Book.getbooktypes())
 
+# create author instance
+aut1 = Author('Leo','Tolstoy')
+aut2 = Author('JD','Salinger')
 #  Create some book instances
-b1 = Book("War and Peace", "Leo Tolstoy", 1225, 39.95,"HARDCOVER")
-b2 = Book("The Catcher in the Rye", "JD Salinger", 234, 29.95, "PAPERBACK")
+b1 = Book("War and Peace", 1225, 39.95,"HARDCOVER",aut1)
+b2 = Book("The Catcher in the Rye", 234, 29.95, "PAPERBACK",aut2)
 
 
 
@@ -66,6 +80,7 @@ for book in thebooks:
     print("  ",book)
 
 print(f'Price for "{b1.title}" is {b1.getPrice()}$')
+print(b1.author)
 # try setting the discount
 #print(f'Price for {b2.title} is {b2.getPrice()}$')
 b2.setDiscount(0.25)
