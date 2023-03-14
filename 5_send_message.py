@@ -10,7 +10,7 @@
 from datetime import datetime
 #get time function
 def getCurrentTime():
-    return datetime.now().strftime("%m-%d-%Y %H:%M:%S")
+    return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
 class Messenger:
     #constructor
