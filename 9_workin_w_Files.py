@@ -1,6 +1,7 @@
 #Working with files
 from datetime import datetime
 import os
+import glob
 
 #create time format
 def time_format(timestamp):
@@ -42,7 +43,27 @@ def disply_all_in_dir(directory):
             # for Windows: print("Creation Time: ", info.st_ctime)
             print("Last access time", time_format(info.st_atime))
             print("Size:",info.st_size)
-    
+
+#display only specific extension of file  like *.txt
+def display_ext(extension):
+    ext = glob.glob(extension)
+    for i in ext:
+        print(i)
+
+#disply by file name in dircectory 
+def search_by_file_name(name):
+    file = glob.glob(name)
+    if file:
+        for i in file:
+            print(i)
+    else:
+        print(f"File not found with this name :'{name}'")
+
+#disply by file name in subdircectories '**/*file name*'
+def find_file_in_subDirectories(name):
+    for file in glob.iglob(name, recursive=True):
+        print(file)
+
 
 
 
@@ -57,5 +78,9 @@ disply_cwd()
 # disply_cwd()
 #disply_all_in_dir("python/")
 #disply_file("python/")
+search_by_file_name('*fibonaci*')
+display_ext("*.txt")
+display_ext("*.py")
+find_file_in_subDirectories('**/*fibonaci*')
 
 
