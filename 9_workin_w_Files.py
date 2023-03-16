@@ -2,6 +2,7 @@
 from datetime import datetime
 import os
 import glob
+import json
 
 #create time format
 def time_format(timestamp):
@@ -65,18 +66,43 @@ def find_file_in_subDirectories(name):
         print(file)
 
 
-#read file from curent directory.
+#read file from curent directory
 def read_file(name):
     with open(name, 'r') as f:
-        contents =f.read()
+        contents =f.read() #we can read data from file by bytes just need to add bytes in ()
         print(contents)
 
+#function to read lines 
+def read_file_in_line(name):
+    with open(name) as f:
+        line = f.readlines()
+        print(line[1])
+
+# read line by line with while
+def read_file_line_by_line(name):
+    with open(name) as f:
+        line = f.readline()
+        while line != "":
+            print(line)
+            line = f.readline()
 
 #write new content in file and remove ald one 
 def write_new_content(name, content):
     with open(name, 'w') as f:
         f.write(content)
     read_file(name) # call function to read file 
+
+#read JASON file with json library
+def display_json(name):
+    with open(name) as f:
+        content = json.load(f)
+        print(content)
+
+#read specific work from file 
+def disply_key_jason(name, key):
+    with open(name) as f:
+        content = json.load(f)
+        print("Welcome ", content[key])
 
 
 
@@ -92,4 +118,9 @@ disply_cwd()
 # find_file_in_subDirectories('**/*fibonaci*')
 
 #read_file('smile_art.txt')
-write_new_content('a.txt','This is some text new information added')
+# write_new_content('a.txt','This is some text new information added')
+
+#read_file_line_by_line("a.txt")
+
+# display_json('monster.json')
+# disply_key_jason('monster.json','monsterName')
