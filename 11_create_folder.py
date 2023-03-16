@@ -15,5 +15,5 @@ def make_dire_Path(name):
     dir_path.mkdir(exist_ok=True)
 
 
-make_directory("new Folder")
-make_dire_Path("new Folder2")
+make_directory("test")
+make_dire_Path("test/Folder2")

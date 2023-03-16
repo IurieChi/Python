@@ -87,9 +87,15 @@ def read_file_line_by_line(name):
             print(line)
             line = f.readline()
 
-#write new content in file and remove ald one 
+#overwrite new content in file and remove ald one 
 def write_new_content(name, content):
     with open(name, 'w') as f:
+        f.write(content)
+    read_file(name) # call function to read file 
+
+#Add new contet to file 
+def write_new_content_apend(name, content):
+    with open(name, 'a') as f:
         f.write(content)
     read_file(name) # call function to read file 
 
@@ -131,7 +137,7 @@ def read_csv_dic(name):
         
 
 #call function
-disply_cwd()
+# disply_cwd()
 # up_one_directory()
 # disply_cwd()
 # disply_all_in_dir("artwork/")
@@ -141,8 +147,9 @@ disply_cwd()
 # display_ext("*.py")
 # find_file_in_subDirectories('**/*fibonaci*')
 
-#read_file('smile_art.txt')
+# read_file('smile_art.txt')
 # write_new_content('a.txt','This is some text new information added')
+# write_new_content_apend('a.txt','\n new information added')
 
 #read_file_line_by_line("a.txt")
 
@@ -150,4 +157,4 @@ disply_cwd()
 # disply_key_jason('monster.json','monsterName')
 
 # read_csv_read('monsters.csv')
-read_csv_dic('monsters.csv')
+# read_csv_dic('monsters.csv')
