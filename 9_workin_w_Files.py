@@ -1,8 +1,9 @@
 #Working with files
 from datetime import datetime
-import os
-import glob
-import json
+import os, glob, json, csv 
+# import pandas as pd 
+
+
 
 #create time format
 def time_format(timestamp):
@@ -98,13 +99,36 @@ def display_json(name):
         content = json.load(f)
         print(content)
 
-#read specific work from file 
+#read specific key from file 
 def disply_key_jason(name, key):
     with open(name) as f:
         content = json.load(f)
         print("Welcome ", content[key])
 
 
+#read csv file usinf csv or panda 
+# to install pandas >>pip3 install pandas
+def read_csv_read(name):
+    with open(name) as f:
+        read = csv.reader(f, delimiter=",")
+        for row in read:
+            print(row) # can add index to read only one index [1]
+
+#read csv with csv.Dictreader
+def read_csv_dic(name):
+    with open(name) as f:
+        dictreader = csv.DictReader(f, delimiter=",")
+        for row in dictreader:
+            print(f'{row["monsterName"]} is price {row["price"]}')
+
+# read csv with panda module
+#ToDo cant import panda to be cheked >>>>>>>
+# def read_csv_pandas(name):
+# 	df = pd.read_csv(name)
+# 	print(df)        
+
+
+        
 
 #call function
 disply_cwd()
@@ -124,3 +148,6 @@ disply_cwd()
 
 # display_json('monster.json')
 # disply_key_jason('monster.json','monsterName')
+
+# read_csv_read('monsters.csv')
+read_csv_dic('monsters.csv')
