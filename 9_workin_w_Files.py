@@ -65,10 +65,18 @@ def find_file_in_subDirectories(name):
         print(file)
 
 
+#read file from curent directory.
+def read_file(name):
+    with open(name, 'r') as f:
+        contents =f.read()
+        print(contents)
 
 
-
-
+#write new content in file and remove ald one 
+def write_new_content(name, content):
+    with open(name, 'w') as f:
+        f.write(content)
+    read_file(name) # call function to read file 
 
 
 
@@ -76,11 +84,12 @@ def find_file_in_subDirectories(name):
 disply_cwd()
 # up_one_directory()
 # disply_cwd()
-#disply_all_in_dir("python/")
-#disply_file("python/")
-search_by_file_name('*fibonaci*')
-display_ext("*.txt")
-display_ext("*.py")
-find_file_in_subDirectories('**/*fibonaci*')
+# disply_all_in_dir("artwork/")
+# disply_file("Python /")
+# search_by_file_name('*fibonaci*')
+# display_ext("*.txt")
+# display_ext("*.py")
+# find_file_in_subDirectories('**/*fibonaci*')
 
-
+#read_file('smile_art.txt')
+write_new_content('a.txt','This is some text new information added')
