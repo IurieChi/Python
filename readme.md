@@ -12,8 +12,11 @@
 11. Create a forder
 12. Count files on directory 
 13. Work with PDF files
-14.
-15.
-16.
+14. Move, rename,delte,copy File and directories
+15. Json files
+16. CSV Files
+17.
+18.
+19.
 
 

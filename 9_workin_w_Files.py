@@ -1,7 +1,7 @@
 #Working with files
 from datetime import datetime
-import os, glob, json, csv 
-# import pandas as pd 
+import os, glob
+
 
 
 
@@ -99,42 +99,6 @@ def write_new_content_apend(name, content):
         f.write(content)
     read_file(name) # call function to read file 
 
-#read JASON file with json library
-def display_json(name):
-    with open(name) as f:
-        content = json.load(f)
-        print(content)
-
-#read specific key from file 
-def disply_key_jason(name, key):
-    with open(name) as f:
-        content = json.load(f)
-        print("Welcome ", content[key])
-
-
-#read csv file usinf csv or panda 
-# to install pandas >>pip3 install pandas
-def read_csv_read(name):
-    with open(name) as f:
-        read = csv.reader(f, delimiter=",")
-        for row in read:
-            print(row) # can add index to read only one index [1]
-
-#read csv with csv.Dictreader
-def read_csv_dic(name):
-    with open(name) as f:
-        dictreader = csv.DictReader(f, delimiter=",")
-        for row in dictreader:
-            print(f'{row["monsterName"]} is price {row["price"]}')
-
-# read csv with panda module
-#ToDo cant import panda to be cheked >>>>>>>
-# def read_csv_pandas(name):
-# 	df = pd.read_csv(name)
-# 	print(df)        
-
-
-        
 
 #call function
 # disply_cwd()
@@ -153,8 +117,6 @@ def read_csv_dic(name):
 
 #read_file_line_by_line("a.txt")
 
-# display_json('monster.json')
-# disply_key_jason('monster.json','monsterName')
 
-# read_csv_read('monsters.csv')
-# read_csv_dic('monsters.csv')
+
+

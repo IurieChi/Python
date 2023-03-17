@@ -25,7 +25,7 @@ def move_file_in_new_directory(file_name,directory_name):
 def copy_file(file,directory):
     shutil.copy(file,directory)
 
-#copy file with meta data creation data aoutho etc.
+#copy file with meta data creation data etc.
 def copy_file_meta(file,directory):
     shutil.copy2(file,directory)
 
