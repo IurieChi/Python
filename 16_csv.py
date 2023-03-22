@@ -45,9 +45,9 @@ def wrire_to_csv_dictionary(file):
 
 
 
-# read_csv_read('Files/monsters.csv')
-read_csv_dic('Files\monsters.csv')
-# write_to_csv('Files/products.csv')
-# # read_csv_read('Files/products.csv')
-# wrire_to_csv_dictionary('Files/products.csv')
-# read_csv_read('Files/products.csv')
+read_csv_read('files/monsters.csv')
+# read_csv_dic('files/monsters.csv')
+# write_to_csv('files/products.csv')
+# # read_csv_read('files/products.csv')
+# wrire_to_csv_dictionary('files/products.csv')
+# read_csv_read('files/products.csv')
