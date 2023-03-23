@@ -59,6 +59,7 @@ def get_up_to_page(file, start_page:int=0,stop_page:int= 0):
         with open (newFillname, 'wb') as output:
             writer.write(output)
         print(f'New file {newFillname} has been created, from {file} from page {start_page} to {stop_page}')
+
 # split off last page from PDF
 def get_lat_page(file):
     with open(file, 'rb')as f:
@@ -72,10 +73,46 @@ def get_lat_page(file):
         writer.write(out)
     print(f'New file with last page from {file} has been created')
 
+#get a list of pdf liles from directory.
+def get_list_of_files(folder: str):
+    pdf_list =[]
+    for path, subdirs,files in os.walk(folder):
+        for name in files:
+            if name.endswith('.pdf'):
+                pdf_list.append(os.path.join(path,name))
+    # print(pdf_list)
+    return pdf_list
+
+#Merging PDFS
+def pdf_merge(list_of_pdf, output_filename='Merege_pdfs.pdf'):
+    merger =pdf.PdfMerger()
+    with open(output_filename, 'wb')as out:
+        for file in list_of_pdf:
+            merger.append(file)
+        merger.write(out)
+
+
+#to fix issue with index errror 
+#rotate page to 90 or 180 degree
+def rotate_page(file, page: int, rotation:int = 90):
+    with open(file,'rb')as f:
+        reader = pdf.PdfReader(f)
+        writer = pdf.PdfWriter()
+        writer.add_page(reader.pages[page])
+        #rotate
+        writer.pages[page].rotate(rotation)
+        filename = os.path.splitext(file)[0]
+        newFilename = f'{filename}_rotated_page_{page}_to_{rotation}_degree.pdf'
+        with open(newFilename,'wb')as out:
+            writer.write(out)
+    print("document created ")
 
 
 # get_metadata_pdf('files/recipe-book.pdf')
 # read_pdf('files/pdf/recipe-book.pdf')
 # split_pdfs('files/pdf/recipe-book.pdf')
 # get_up_to_page('files/pdf/recipe-book.pdf',0,3)
-get_lat_page('files/pdf/recipe-book.pdf')
+# get_lat_page('files/pdf/recipe-book.pdf')
+list = get_list_of_files("files/pdf")
+rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
+

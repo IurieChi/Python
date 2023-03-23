@@ -25,5 +25,5 @@ def bottom_up_walk(directory):
         print()
 
 
-#top_down_walk('file/artwork/')
-bottom_up_walk('file/artwork/')
+# top_down_walk('files/artwork/')
+bottom_up_walk('files/artwork')
