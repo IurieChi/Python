@@ -2,6 +2,7 @@
 # need to install PyPDF2 library on mac pip3 install PyPDF2
 
 import PyPDF2 as pdf
+from PIL import Image
 import os, fitz
 
 
@@ -27,20 +28,39 @@ def read_pdf(name):
             text = page.extract_text()
             result.append(text)
         print(' '.join(result))# convert list to a sting 
- #extract image from file        
+ 
+#extract image from file 
 def extract_images(file):
     with open(file,'rb') as f:
-        reader = pdf.PdfMerger(f)
+        reader = pdf.PdfReader(f)
         for i in range(0,len(reader.pages)):
             page = reader.pages[i]
-            count = 1
             for img in page.images:
-                filename = os.path.splitext(file)
-                imagename = f'{filename} image_{str(count)}.png'
-                with open(imagename, "wb") as fp:
-                    fp.write(img.data)   
-                    count+=1    
-
+                # imagename = os.path.splitext(files/images)
+                # imagename = f'image_{str(img)}.png'
+                with open(os.path.join('files/images/',img.name),'wb')as out: 
+                    out.write(img.data)    
+          
+    
+    # #extract image from  file using fitz module
+def extract_image_fitz(file):
+    pdf_file = fitz.open(file) #create objet 
+    images_list =[] # create list to store image info
+    for page in range(0, len(pdf_file)):
+        page_content = pdf_file[page]
+        images_list.extend(page_content.get_images())
+    if len(images_list)==0: 
+        raise ValueError (f'PDF file {file} dont contain Images')
+    # Extract and save images
+    for i, image in enumerate(images_list, start=1):
+        xref= image[0]# extract image object number 
+        image = pdf_file.extract_image(xref) #extract image
+        image_bytes= image['image']
+        image_ext = image['ext'] #store image extension 
+        image_name = str(i)+'.'+ image_ext #generate image name 
+        with open(os.path.join('files/images/',image_name),'wb')as ext_file:
+            ext_file.write(image_bytes)
+            ext_file.close()
 
 #Split PDFs 
 # split pdf into multiple pdfs save 1 page per file
