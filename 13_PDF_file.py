@@ -27,6 +27,20 @@ def read_pdf(name):
             text = page.extract_text()
             result.append(text)
         print(' '.join(result))# convert list to a sting 
+ #extract image from file        
+def extract_images(file):
+    with open(file,'rb') as f:
+        reader = pdf.PdfMerger(f)
+        for i in range(0,len(reader.pages)):
+            page = reader.pages[i]
+            count = 1
+            for img in page.images:
+                filename = os.path.splitext(file)
+                imagename = f'{filename} image_{str(count)}.png'
+                with open(imagename, "wb") as fp:
+                    fp.write(img.data)   
+                    count+=1    
+
 
 #Split PDFs 
 # split pdf into multiple pdfs save 1 page per file
@@ -113,6 +127,6 @@ def rotate_page(file, page: int, rotation:int = 90):
 # split_pdfs('files/pdf/recipe-book.pdf')
 # get_up_to_page('files/pdf/recipe-book.pdf',0,3)
 # get_lat_page('files/pdf/recipe-book.pdf')
-list = get_list_of_files("files/pdf")
-rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
-
+# list = get_list_of_files("files/pdf")
+# rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
+extract_images('files/pdf/Iurie Chigai.pdf')
