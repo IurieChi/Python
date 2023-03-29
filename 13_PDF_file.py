@@ -2,7 +2,7 @@
 # need to install PyPDF2 library on mac pip3 install PyPDF2
 
 import PyPDF2 as pdf
-import os 
+import os, fitz
 
 
 
@@ -114,12 +114,14 @@ def rotate_page(file, page: int, rotation:int = 90):
         writer = pdf.PdfWriter()
         writer.add_page(reader.pages[page])
         #rotate
-        writer.pages[page].rotate(rotation)
+        writer.pages[page].rotate(rotation) 
         filename = os.path.splitext(file)[0]
         newFilename = f'{filename}_rotated_page_{page}_to_{rotation}_degree.pdf'
         with open(newFilename,'wb')as out:
             writer.write(out)
     print("document created ")
+
+# def extract_links(file): #you need to install the PyMuPdf  pip install --upgrade pymupdf then import fitz
 
 
 # get_metadata_pdf('files/recipe-book.pdf')
@@ -129,4 +131,4 @@ def rotate_page(file, page: int, rotation:int = 90):
 # get_lat_page('files/pdf/recipe-book.pdf')
 # list = get_list_of_files("files/pdf")
 # rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
-extract_images('files/pdf/Iurie Chigai.pdf')
+extract_images('files/pdf/recipe-book.pdf')
