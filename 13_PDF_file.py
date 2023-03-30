@@ -3,7 +3,7 @@
 
 import PyPDF2 as pdf
 from PIL import Image
-import os, fitz
+import os, fitz, pdfplumber
 
 
 
@@ -141,7 +141,25 @@ def rotate_page(file, page: int, rotation:int = 90):
             writer.write(out)
     print("document created ")
 
-# def extract_links(file): #you need to install the PyMuPdf  pip install --upgrade pymupdf then import fitz
+def extract_tabel(file): # need to install pdfplumber and import it 
+    with pdfplumber.open(file) as f:
+        for page in f.pages:
+            print(page.extract_tables())
+
+def save_PDF_toImage(file, page:int):#you need to install the PyMuPdf  pip install --upgrade pymupdf then import fitz
+    doc = fitz.open(file)
+    page = doc.load_page(page)
+    # for i in range(0,len(page)):
+    pix = page.get_pixmap()
+    pix.save (f'page_{page.number}.png')
+    
+def extract_links(file): #you need to install the PyMuPdf  pip install --upgrade pymupdf then import fitz
+    doc = fitz.open(file)
+    for i in range(doc.page_count):
+        page = doc.load_page(i)
+        link = page.get_links()
+        print(link)
+    
 
 
 # get_metadata_pdf('files/recipe-book.pdf')
@@ -151,4 +169,7 @@ def rotate_page(file, page: int, rotation:int = 90):
 # get_lat_page('files/pdf/recipe-book.pdf')
 # list = get_list_of_files("files/pdf")
 # rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
-extract_images('files/pdf/recipe-book.pdf')
+# extract_tabel('files/pdf/recipe-book.pdf')
+# extract_images('files/pdf/recipe-book.pdf')
+# save_PDF_toImage('files/pdf/recipe-book.pdf',4)
+extract_links('files/pdf/recipe-book.pdf')
