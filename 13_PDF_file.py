@@ -152,6 +152,12 @@ def save_PDF_toImage(file, page:int):#you need to install the PyMuPdf  pip insta
     # for i in range(0,len(page)):
     pix = page.get_pixmap()
     pix.save (f'page_{page.number}.png')
+
+    # #save all the pages as images
+    # for i in range(doc.page_count):
+    #     page = doc.load_page(i)
+    #     pix = page.get_pixmap()
+    #     pix.save("page-%i.png" % page.number)
     
 def extract_links(file): #you need to install the PyMuPdf  pip install --upgrade pymupdf then import fitz
     doc = fitz.open(file)
@@ -168,8 +174,8 @@ def extract_links(file): #you need to install the PyMuPdf  pip install --upgrade
 # get_up_to_page('files/pdf/recipe-book.pdf',0,3)
 # get_lat_page('files/pdf/recipe-book.pdf')
 # list = get_list_of_files("files/pdf")
-# rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
+rotate_page('files/pdf/recipe-book_from_0_to_3.pdf',2)
 # extract_tabel('files/pdf/recipe-book.pdf')
 # extract_images('files/pdf/recipe-book.pdf')
 # save_PDF_toImage('files/pdf/recipe-book.pdf',4)
-extract_links('files/pdf/recipe-book.pdf')
+# extract_links('files/pdf/recipe-book.pdf')

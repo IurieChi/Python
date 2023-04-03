@@ -45,24 +45,10 @@ def delete_file_pathlib(file_name):
     file = Path(file_name)
     file.unlink()
 
-#delete directory with os module
-def delete_directory_os(directory):
-    os.rmdir(directory)
 
-def delte_directory_pathlib(directory):
-    direct = Path(directory)
-    direct.rmdir()
-
-#delete directory including subdirectory
-def delete_dire_andSub_direct(directory):
-    shutil.rmtree(directory)
-
-#*********** Delete files with python will delete file totaly from PC***********************
 
 #rename_os('a.txt', 'aa.txt')
 #move_file_shutil("test/Folder2/png", "test")
 #copy_file_meta('test/png/monster01.png','test')
 
-# remove_file_os('test/monster01.png')
-# delete_dire_andSub_direct('test/Folder2')
 

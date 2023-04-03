@@ -2,9 +2,6 @@
 from datetime import datetime
 import os, glob
 
-
-
-
 #create time format
 def time_format(timestamp):
     formattime=datetime.utcfromtimestamp(timestamp)
