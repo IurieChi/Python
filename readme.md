@@ -1,4 +1,6 @@
 
+    Vowel eater "vowel_eater
+    Is year a common Year or Leap "check_year"
 1. Factorial calculator using funtion 
 2. ASCII Art Encoding
 3. Converting Hexadecimal to Decimal
@@ -17,6 +19,7 @@
 16. CSV Files
 17. Rename photo
 18. Read file and encript it
-19. Is year a common Year or Leap
+19. 
+
 
 
