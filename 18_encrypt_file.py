@@ -12,14 +12,15 @@ def encryptFile(file):
     with open('mykey.txt','rb')as f:
         key = f.read()
     
-    f_object = Fernet(key)# create Fernet ogbbect with our key 
+    f_object = Fernet(key)# create Fernet object with our key 
     #read file 
     with open(file, 'rb')as original_file:
         file = original_file.read()
     encrypted = f_object.encrypt(file)
+    print(encrypted)
     # save it to file 
-    with open('enccrypted.txt', 'wb') as encrypted_file:
-            encrypted_file.write(encrypted)
+    # with open('enccrypted.txt', 'wb') as encrypted_file:
+    #         encrypted_file.write(encrypted)
 
 def decryptFile(file):
     with open ('mykey.txt', 'rb')as f:
@@ -35,5 +36,5 @@ def decryptFile(file):
      
     
 # generate_key()
-# encryptFile('files/a.txt')
-decryptFile('enccrypted.txt')
+encryptFile('files/a.txt')
+# decryptFile('enccrypted.txt')

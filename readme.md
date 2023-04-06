@@ -15,8 +15,8 @@
 14. Move, rename,delte,copy File and directories
 15. Json files
 16. CSV Files
-17. Read file and encript it 
-18.
-19.
+17. Rename photo
+18. Read file and encript it
+19. Is year a common Year or Leap
 
 
