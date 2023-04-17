@@ -1,6 +1,7 @@
 
-    Vowel eater "vowel_eater
+    Vowel eater "vowel_eater"s
     Is year a common Year or Leap "check_year"
+    
 1. Factorial calculator using funtion 
 2. ASCII Art Encoding
 3. Converting Hexadecimal to Decimal
