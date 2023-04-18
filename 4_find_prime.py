@@ -9,22 +9,39 @@
 
 
 # type number
-num = int(input("Please provide number: "))
+number = int(input("Please provide number: "))
 # function 
-def primesUpTo(num):
+def primesUpTo(number):
     primes = [2]
-    for number in range(3,num):
-        sqrtNum = number ** 0.5
+    for numberr in range(3,number):
+        sqrtNum = numberr ** 0.5
         for factor in primes:
-            if number % factor ==0:
+            if numberr % factor ==0:
                 #not prime
                 break
             if factor > sqrtNum:
                 #it's prime
-                primes.append(number)
+                primes.append(numberr)
                 break
     return primes
-print(primesUpTo(num))
+print(primesUpTo(number))
 
+
+# find a prime number till 20
+
+def is_prime(num):
+   for i in range(2, int(1 + num ** 0.5)):
+        if num % i == 0:
+            return False
+        return True
+
+def test():
+    for i in range(1, 20):
+        if is_prime(i + 1):
+            print(i + 1, end=" ")
+    print()
+
+
+test()
 
 
