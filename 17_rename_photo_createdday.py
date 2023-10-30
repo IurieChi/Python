@@ -18,7 +18,7 @@ def rename_image(image_folder):
         if path.is_file()and path.suffix in type_file:
             print(f"Rename {path.stem}" )
             date = generate_created_date(path)
-            new_path = Path(image_folder + date + path.stem + path.suffix)
+            new_path = Path(image_folder + date + path.suffix) #+ path.stem
             path.rename(new_path)
 
 
