@@ -12,8 +12,6 @@ def write_to_json(file, dictionary_data):
         json.dump(dictionary_data, write)
 
 
-
-
 #read JASON file with json library
 def display_json(name):
     with open(name) as f:
