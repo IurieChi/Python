@@ -3,6 +3,7 @@
 
 import os,shutil
 from pathlib import Path
+import  sys
 class Folder:
 
 #create patri with os
@@ -32,9 +33,11 @@ class Folder:
 
 #*********** Delete files with python will delete file totaly from PC***********************
 folder = Folder()
-folder.make_directory("PDF")
+# folder.make_directory("PDF")
 # folder.make_dire_Path("pdf")
 
 # remove_file_os('test/monster01.png')
 # delete_dire_andSub_direct('test/Folder2')
 
+# print(os.listdir(os.getcwd()))
+print(os.stat('somefile.txt'))
