@@ -44,8 +44,24 @@ def wrire_to_csv_dictionary(file):
         writer.writerow(item)
 
 
+with open('files/names.csv', 'w', newline='') as csvfile:
+    fieldnames = ['first_name', 'last_name']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-read_csv_read('files/monsters.csv')
+    writer.writeheader()
+    writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+    writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
+    writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+
+
+
+with open('files/names.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        print(row['first_name'], row['last_name'])
+        print(row)
+
+# read_csv_read('files/monsters.csv')
 # read_csv_dic('files/monsters.csv')
 # write_to_csv('files/products.csv')
 # # read_csv_read('files/products.csv')
