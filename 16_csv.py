@@ -1,11 +1,11 @@
 #CSV format
 
 import csv
-# import pandas as pd 
 
-#read csv file usinf csv or panda 
+#read csv file usinf csv or panda
 # to install pandas >>pip3 install pandas
 def read_csv_read(name):
+    """"""
     with open(name) as f:
         read = csv.reader(f, delimiter=",")
         for row in read:
@@ -13,7 +13,7 @@ def read_csv_read(name):
 
 #read csv with csv.Dictreader
 def read_csv_dic(name):
-    with open(name) as f:
+    with open(name,encoding= str) as f:
         dictreader = csv.DictReader(f, delimiter=",")
         for row in dictreader:
             print(f'{row["monsterName"]} is price {row["price"]}')
@@ -21,14 +21,14 @@ def read_csv_dic(name):
 
 
 # read csv with panda module
-#ToDo cant import panda to be cheked >>>>>>>
+#ToDo cant import panda to be cheked
 # def read_csv_pandas(name):
 # 	df = pd.read_csv(name)
-# 	print(df)        
+# 	print(df)
 
 
 def write_to_csv(file):
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding= str) as f:
         writer = csv.writer(f) #create object
         writer.writerow(["ID", "Category", "Name", "Quantity", "Price"])
         writer.writerow([41, "Furnishings", "Office Chair", 10, 85])
@@ -37,7 +37,7 @@ def write_to_csv(file):
 
 #add new row in existing csv file under header 
 def wrire_to_csv_dictionary(file):
-    with open(file, 'a') as f:
+    with open(file, 'a',  encoding= str) as f:
         header = ['id', 'category', 'name','quantity', 'price']
         writer = csv.DictWriter(f, fieldnames=header)
         item = {'id':65, 'category': 'maintenance', 'name':'ladder', 'quantity':33, 'price':50}
@@ -66,4 +66,4 @@ with open('files/names.csv', newline='') as csvfile:
 # write_to_csv('files/products.csv')
 # # read_csv_read('files/products.csv')
 # wrire_to_csv_dictionary('files/products.csv')
-# read_csv_read('files/products.csv')
+read_csv_read('files/products.csv')
