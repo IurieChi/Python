@@ -6,7 +6,7 @@ for key in {'one':1, 'two':2}:
     print(key)
 for char in "123":
     print(char)
-for line in open("files/a.txt", "r"):
+for line in open("files/a.txt", encoding="UTF-8"):
     print(line, end='')
 
 # Outputs: [range, tuple, set]
@@ -110,5 +110,5 @@ print(Page("page_5", 5) in book) # Outputs: False
 iterator = iter(book)
 print(Page("page_2", 2) in iterator) # Outputs: True
 print(Page("page_2", 2) in iterator) # Outputs: False
-# there is only one page_2 in the book 
+# there is only one page_2 in the book
 
