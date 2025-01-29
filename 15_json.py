@@ -9,7 +9,7 @@ def craete_dictionary(name, title, price, scariness):
 
 def write_to_json(file, dictionary_data):
     with open(file, 'w') as write:
-        json.dump(dictionary_data, write)
+        json.dumps(dictionary_data, write)
 
 
 #read JASON file with json library
